@@ -1,0 +1,305 @@
+.app-page {
+  min-height: calc(100vh - 64px);
+  padding: 0;
+  background: #ffffff;
+}
+
+/* Common preview styles for all app pages */
+.page-preview-container {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 64px - 56px);
+}
+
+.page-content-wrapper {
+  padding: calc(64px + 56px + 2rem) 2rem 2rem 2rem;
+  filter: blur(1.5px);
+  opacity: 0.85;
+}
+
+/* Disable interactions for all buttons in app pages */
+.page-content-wrapper button {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+.page-content-wrapper button:hover {
+  cursor: not-allowed !important;
+}
+
+/* Terminal styles */
+.dashboard-terminal {
+  background: #ffffff;
+  border-radius: 0;
+  overflow: hidden;
+  height: calc(100vh - 64px - 56px);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.terminal-body {
+  padding: 2rem;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #1a1a1a;
+  height: 100%;
+  overflow-y: auto;
+  background: #ffffff;
+}
+
+.terminal-line {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.05);
+}
+
+.terminal-line:last-child {
+  border-bottom: none;
+}
+
+.terminal-prompt {
+  color: #e19393;
+  font-weight: 500;
+}
+
+.terminal-command {
+  color: #1a1a1a;
+}
+
+.terminal-output {
+  color: rgba(26, 26, 26, 0.7);
+  display: block;
+  margin-left: 0;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.2em;
+  background: #e19393;
+  margin-left: 2px;
+  animation: cursorBlink 1s infinite;
+  vertical-align: text-bottom;
+  filter: blur(0) !important; /* Keep cursor visible even with page blur */
+  opacity: 1 !important;
+}
+
+@keyframes cursorBlink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Terminal scrollbar */
+.terminal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: #e19393;
+  border-radius: 3px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+  background: #e8a8a8;
+}
+
+.page-preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.page-preview-text {
+  font-family: var(--font-surgena, 'Surgena', sans-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  padding: 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Sub header */
+.app-sub-header {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 999;
+  transition: all var(--transition-base);
+}
+
+.app-sub-header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 var(--spacing-xl);
+  display: flex;
+  align-items: center;
+}
+
+.app-sub-nav {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.app-sub-nav-link {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.01em;
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all var(--transition-base);
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  filter: blur(0.5px);
+  opacity: 0.7;
+}
+
+.app-sub-nav-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(225, 147, 147, 0.15), rgba(245, 245, 220, 0.3));
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  z-index: -1;
+}
+
+.app-sub-nav-link.active {
+  color: #e19393;
+  background: rgba(225, 147, 147, 0.1);
+  filter: blur(0);
+  opacity: 1;
+}
+
+.app-sub-nav-link:hover:not(.active) {
+  color: #e19393;
+  background: rgba(225, 147, 147, 0.05);
+}
+
+@media (max-width: 768px) {
+  .app-sub-header {
+    height: 48px;
+  }
+  
+  .app-sub-header-container {
+    padding: 0 var(--spacing-md);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .app-sub-nav {
+    gap: 0.25rem;
+    min-width: max-content;
+  }
+  
+  .app-sub-nav-link {
+    font-size: var(--font-size-xs);
+    padding: 0.4rem 0.75rem;
+    white-space: nowrap;
+  }
+}
+
+.app-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: calc(64px + 56px + 4rem) 2rem 4rem 2rem;
+}
+
+.app-page-title {
+  font-family: var(--font-surgena, 'Surgena', sans-serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.app-page-description {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem auto;
+  line-height: 1.6;
+}
+
+.app-page-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.app-feature {
+  padding: 2rem;
+  background: rgba(225, 147, 147, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(225, 147, 147, 0.1);
+  transition: all var(--transition-base);
+}
+
+.app-feature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(225, 147, 147, 0.15);
+  border-color: rgba(225, 147, 147, 0.2);
+}
+
+.app-feature h3 {
+  font-family: var(--font-surgena, 'Surgena', sans-serif);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+}
+
+.app-feature p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .app-page-container {
+    padding: calc(64px + 48px + 2rem) 1.5rem 2rem 1.5rem;
+  }
+  
+  .app-page-features {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
