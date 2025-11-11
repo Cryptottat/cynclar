@@ -15,8 +15,8 @@ export default function Header() {
           <span className="logo-text">cynclar</span>
         </Link>
         <nav className="header-nav">
-          <a href="https://pump.fun/coin/4ZnGxkACWwyj3LYaJzNv9bRa77LyZq2EdXVqmn5Mpump" target="_blank" rel="noopener noreferrer" className="nav-link">
-            pump.fun
+          <a href="https://pump.fun" target="_blank" rel="noopener noreferrer" className="nav-link">
+            $CNCL
           </a>
           <a href="https://x.com/cynclardotcloud" target="_blank" rel="noopener noreferrer" className="nav-link">
             x
