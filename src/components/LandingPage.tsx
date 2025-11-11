@@ -73,7 +73,7 @@ export default function LandingPage() {
           </h1>
           
           <div className="hero-tagline" style={{ animationDelay: '0.4s' }}>
-            <span className="tagline-main">Instant Data, Instant Wealth.</span>
+            <span className="tagline-main">Real-time Truth, Immediate Gain.</span>
           </div>
         </div>
 
