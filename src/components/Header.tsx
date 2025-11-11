@@ -16,7 +16,7 @@ export default function Header() {
         </Link>
         <nav className="header-nav">
           <a href="https://pump.fun/coin/4ZnGxkACWwyj3LYaJzNv9bRa77LyZq2EdXVqmn5Mpump" target="_blank" rel="noopener noreferrer" className="nav-link">
-            $CNCL
+            pump.fun
           </a>
           <a href="https://x.com/cynclardotcloud" target="_blank" rel="noopener noreferrer" className="nav-link">
             x
